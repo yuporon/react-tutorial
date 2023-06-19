@@ -1,21 +1,13 @@
-import './App.css';
+import '../style/App.css';
 import { useState } from 'react';
 
+import { FilterableProductTable } from './FilterableProductTable';
 import { Game } from './Game';
 import { Profile } from './Profile';
 import { ShoppingList } from './ShoppingList';
-
-export const user = {
-  name: 'Hedy Lamarr',
-  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
-  imageSize: 90,
-};
-
-export const products = [
-  { title: 'Cabbage', isFruit: false, id: 1 },
-  { title: 'Garlic', isFruit: false, id: 2 },
-  { title: 'Apple', isFruit: true, id: 3 },
-];
+import { ITEMS } from '../data/Item';
+import { PRODUCTS } from '../data/Product';
+import { USER } from '../data/User';
 
 interface MyButtonProps {
   readonly count?: number;
@@ -42,13 +34,16 @@ export default function App() {
         <MyButton count={count} onClick={handleClick} />
       </div>
       <div>
-        <Profile />
+        <Profile user={USER} />
       </div>
       <div>
-        <ShoppingList />
+        <ShoppingList items={ITEMS} />
       </div>
       <div>
         <Game />
+      </div>
+      <div>
+        <FilterableProductTable products={PRODUCTS} />
       </div>
     </>
   );

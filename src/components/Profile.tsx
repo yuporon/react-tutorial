@@ -1,6 +1,14 @@
-import { user } from './App';
+interface User {
+  readonly name: string;
+  readonly imageUrl: string;
+  readonly imageSize: number;
+}
 
-export function Profile() {
+interface ProfileProps {
+  readonly user: User;
+}
+
+export function Profile({ user }: ProfileProps) {
   return (
     <>
       <h1>{user.name}</h1>
