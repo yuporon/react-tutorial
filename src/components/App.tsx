@@ -1,6 +1,8 @@
 import '../style/App.css';
 import { useState } from 'react';
 
+import { Grid } from '@mui/material';
+
 import { FilterableProductTable } from './FilterableProductTable';
 import { Game } from './Game';
 import { Profile } from './Profile';
@@ -26,25 +28,33 @@ export default function App() {
   }
 
   return (
-    <>
-      <h1>Welcome to my app</h1>
-      <div>
+    <Grid container direction="column">
+      <Grid item>
+        <h1>Welcome to my app</h1>
+      </Grid>
+      <Grid item>
         <h2>Counters that update together</h2>
-        <MyButton count={count} onClick={handleClick} />
-        <MyButton count={count} onClick={handleClick} />
-      </div>
-      <div>
+        <Grid container direction="row">
+          <Grid item>
+            <MyButton count={count} onClick={handleClick} />
+          </Grid>
+          <Grid item>
+            <MyButton count={count} onClick={handleClick} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
         <Profile user={USER} />
-      </div>
-      <div>
+      </Grid>
+      <Grid item>
         <ShoppingList items={ITEMS} />
-      </div>
-      <div>
+      </Grid>
+      <Grid item>
         <Game />
-      </div>
-      <div>
+      </Grid>
+      <Grid item>
         <FilterableProductTable products={PRODUCTS} />
-      </div>
-    </>
+      </Grid>
+    </Grid>
   );
 }

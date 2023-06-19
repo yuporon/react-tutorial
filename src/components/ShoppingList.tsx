@@ -1,3 +1,5 @@
+import { Grid, Typography } from '@mui/material';
+
 interface Item {
   readonly id: number;
   readonly title: string;
@@ -10,15 +12,20 @@ interface ShoppingListProps {
 
 export function ShoppingList({ items }: ShoppingListProps) {
   const listItems = items.map((item) => (
-    <li
-      key={item.id}
-      style={{
-        color: item.isFruit ? 'magenta' : 'darkgreen',
-      }}
-    >
-      {item.title}
-    </li>
+    <Grid item key={item.id}>
+      <Typography
+        style={{
+          color: item.isFruit ? 'magenta' : 'darkgreen',
+        }}
+      >
+        {item.title}
+      </Typography>
+    </Grid>
   ));
 
-  return <ul>{listItems}</ul>;
+  return (
+    <Grid container direction="column">
+      {listItems}
+    </Grid>
+  );
 }
