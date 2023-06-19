@@ -86,13 +86,7 @@ function Board({ xIsNext, squares, onPlay }: BoardProps) {
   }
 
   return (
-    <Grid
-      container
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-      style={{ width: '500px', height: '500px' }}
-    >
+    <Grid container direction="column" alignItems="center" justifyContent="center">
       <Typography variant="h5" gutterBottom className="status">
         {status}
       </Typography>
@@ -161,7 +155,7 @@ export function Game() {
       justifyContent="center"
       spacing={3}
     >
-      <Grid item xs={12} md={12} textAlign="center" mt={5}>
+      <Grid item xs={12} md={12} textAlign="center" mt={12} height="30vh">
         <Typography variant="h3" gutterBottom>
           さんもくならべ
         </Typography>
@@ -169,19 +163,13 @@ export function Game() {
           もう一度あそぶ
         </Button>
       </Grid>
-      <Grid item xs={12} md={4}>
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          height="100%"
-        >
+      <Grid item xs={12} md={4} height="40vh">
+        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
           <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
         </Box>
       </Grid>
       <Grid item xs={12} md={4}>
-        <Box sx={{ overflow: 'scroll', height: '300px' }}>
+        <Box sx={{ overflow: 'scroll', height: '40vh' }}>
           <List>{moves}</List>
         </Box>
       </Grid>
