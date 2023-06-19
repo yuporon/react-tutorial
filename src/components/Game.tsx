@@ -28,7 +28,7 @@ function Square({ value, onSquareClick }: SquareProps) {
     <Grid item>
       <Button
         size="large"
-        variant="outlined"
+        variant="contained"
         color="primary"
         onClick={onSquareClick}
         sx={{
@@ -80,9 +80,9 @@ function Board({ xIsNext, squares, onPlay }: BoardProps) {
   const winner = calculateWinner(squares);
   let status;
   if (winner != null) {
-    status = 'Winner: ' + winner;
+    status = '勝者🎉: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = '次のプレイヤー: ' + (xIsNext ? 'Xの方' : 'Oの方');
   }
 
   return (
@@ -142,9 +142,9 @@ export function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = move + '手目に戻る';
     } else {
-      description = 'Go to game start';
+      description = 'ゲームの開始';
     }
     return (
       <ListItem key={move}>
@@ -161,6 +161,14 @@ export function Game() {
       justifyContent="center"
       spacing={3}
     >
+      <Grid item xs={12} md={12} textAlign="center" mt={5}>
+        <Typography variant="h3" gutterBottom>
+          さんもくならべ
+        </Typography>
+        <Button variant="contained" color="secondary" onClick={resetGame}>
+          もう一度あそぶ
+        </Button>
+      </Grid>
       <Grid item xs={12} md={4}>
         <Box
           display="flex"
@@ -169,15 +177,7 @@ export function Game() {
           justifyContent="center"
           height="100%"
         >
-          <Typography variant="h3" gutterBottom>
-            Tic Tac Toe
-          </Typography>
           <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
-          <Box mt={5}>
-            <Button variant="contained" color="secondary" onClick={resetGame}>
-              Reset Game
-            </Button>
-          </Box>
         </Box>
       </Grid>
       <Grid item xs={12} md={4}>
